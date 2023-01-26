@@ -1,0 +1,25 @@
+.registerFormStyle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.registerInputStyle{
+    width: 100% !important;
+}
+.imageContainer{
+    width: 7vw;
+    height: auto;
+    border: solid 1px black;
+    border-radius: 1rem;
+}
+.imageStyle{
+    width: 100%;
+    height: 100%;
+}
+.imageColStyle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

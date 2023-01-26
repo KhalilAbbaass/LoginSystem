@@ -3,7 +3,7 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
-import icon from '../../assets/icon.png'
+import icon from '../../assets/lionicon.png'
 
 const NavbarOne = () => {
   return (
