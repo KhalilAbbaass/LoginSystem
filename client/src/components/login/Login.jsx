@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+
 import './Login.css'
 
 const Login = () => {
@@ -10,11 +11,11 @@ const Login = () => {
 
             <h6 className='mb-4'>Please login to your account</h6>
             
-            <Form.Group className="loginInputStyle mb-3 mx-5" controlId="formBasicEmail">      
+            <Form.Group className="loginInputStyle mb-3 mx-5" >      
                 <Form.Control type="email" placeholder="Enter email" />
             </Form.Group>
 
-            <Form.Group className="loginInputStyle mb-3 mx-5" controlId="formBasicPassword">      
+            <Form.Group className="loginInputStyle mb-3 mx-5" >      
                 <Form.Control type="password" placeholder="Enter password" />
             </Form.Group>
             

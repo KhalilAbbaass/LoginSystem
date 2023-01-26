@@ -20,8 +20,9 @@ const LoginRegister = () => {
     const radios = [
         { name: 'Login', value: '1' },
         { name: 'Register', value: '2' },
-    
   ];
+
+  
 
   return (
     <div>
@@ -67,8 +68,8 @@ const LoginRegister = () => {
             </ButtonGroup>
       <div className="text-white px-3 py-4 p-md-5 mx-md-4">
        
-        <h4 class="mb-4">Login System features</h4>
-        <p class="small mb-0">This login system focuses on the JWT Token, Authentication, Authorization. 
+        <h4 className="mb-4">Login System features</h4>
+        <p className="small mb-0">This login system focuses on the JWT Token, Authentication, Authorization. 
                                     It also shows how a user is not allowed to perform operations that the admin can do. 
                                     <br/>
                                     To log in as an admin:  
