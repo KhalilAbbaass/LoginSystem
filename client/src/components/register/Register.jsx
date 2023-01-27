@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import FileBase64 from 'react-file-base64'
 import './Register.css'
 import Image from 'react-bootstrap/Image'
 import icon8 from '../../assets/icon8.png'
@@ -43,9 +43,9 @@ const Register = () => {
                 <Col md='6'>
                     <Form.Group controlId="formFile" className="mb-3">
                     <Form.Text className='m-1'>Choose Profile Picture</Form.Text>
-                    <Form.Control type="file" onChange={(e) => {
-                        setImage(URL.createObjectURL(e.target.files[0]))
-                        }}/>
+                    <FileBase64 type="file" multiple={false} onDone={
+                        (file)=> setImage(file.base64)
+                    }/>
                     </Form.Group>
                 </Col>
                 <Col className='imageColStyle' md='6'>
