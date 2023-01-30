@@ -2,6 +2,7 @@ import Button  from 'react-bootstrap/Button';
 import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import {Outlet } from "react-router-dom";
 
 import icon from '../../assets/lionicon.png'
 
@@ -10,7 +11,8 @@ const NavbarOne = () => {
     <div>
         <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">
+         
+          <Navbar.Brand>
             <img
               alt=''
               src={icon}
@@ -18,11 +20,13 @@ const NavbarOne = () => {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-            Login System
+             Login System
+           
           </Navbar.Brand>
           <Button variant ="outline-light">Login</Button>
         </Container>
       </Navbar>
+      <Outlet/>
     </div>
   )
 }
