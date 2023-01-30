@@ -2,6 +2,7 @@ const router = require("express").Router();
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
+const jwtDecode = require("jwt-decode")
 
 const userSchema = require("../models/User");
 
@@ -80,6 +81,18 @@ router.get("/logout", async(req,res) => {
         res.status(500).json(err)
     }
    
+})
+router.get("/current" , async (req, res) => {
+    try{
+        const decodedUser = jwtDecode(req.cookies['jwt'])
+        res.send(decodedUser)
+
+    }catch(err){
+        consolee.log("error at current")
+        res.status(500).json(err)
+
+    }
+    
 })
 
 module.exports = router;
