@@ -24,7 +24,7 @@ router.post("/register", async(req , res) => {
         const newUser = userSchema({
             username: userInfo.username,
             email: userInfo.email,
-            Image: userInfo.Image,
+            image: userInfo.image,
             password: crypto.createHash(process.env.HASHTYPE).update(userInfo.password).digest(process.env.ENCODEAS)
         })
         await newUser.save();
@@ -48,21 +48,21 @@ router.post("/login", async (req,res) => {
         if(crypto.createHash(process.env.HASHTYPE).update(userInfo.password).digest(process.env.ENCODEAS) != userFound.password)
             return res.status(403).json("Incorrect password")
 
-            if(userFound.isAdmin == false){
-                 const payload = { userFound }
-                 await jwt.sign({user:userFound, role: "user"}, process.env.JWTSECRET, async (err, token) => {
-                 await res.cookie("jwt", `${token}`, {httpOnly:true})
-                 res.status(200).json("you are logged in with a token as a user")
-                 }) 
-            } else {
-                const payload = { userFound }
-                await jwt.sign({admin:userFound, role: "admin"}, process.env.JWTSECRET, async (err, token) => {
-                await res.cookie("jwt", `${token}`, {httpOnly:true})
+        if(userFound.isAdmin == false){
+            const payload = { userFound }
+            
+            await jwt.sign({ user: userFound, role: "user"}, process.env.JWTSECRET, async (err, token) => {
+                await res.cookie('jwt', `${token}`, {httpOnly: true})
+                res.status(200).json("you are logged in with a token as a user")
+            })
+        } else {
+            const payload = { userFound }
+            
+            await jwt.sign({ admin: userFound, role: "admin"}, process.env.JWTSECRET, async (err, token) => {
+                await res.cookie('jwt', `${token}`, {httpOnly: true})
                 res.status(200).json("you are logged in with a token as an admin")
-                }) 
-            }
-
-       
+            })
+        }
 
     } catch(err) {
         console.log("error at user login route")
