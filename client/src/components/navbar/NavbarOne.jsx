@@ -6,8 +6,19 @@ import {Outlet } from "react-router-dom";
 
 import icon from '../../assets/lionicon.png'
 
+import { LogoutUser } from '../../services/Logout';
+import { useNavigate } from 'react-router-dom';
 
-const NavbarOne = ({currentUser}) => {
+const NavbarOne = ({currentUser, setCurrentUser}) => {
+
+  const nav = useNavigate();
+
+  const handleLogoutUser = () => {
+    setCurrentUser("")
+    LogoutUser().then(
+      nav("/")
+    );
+  }
 
   return (
     <div>
@@ -26,7 +37,7 @@ const NavbarOne = ({currentUser}) => {
              {currentUser ? "Welcome "+ currentUser.username : "Login System"}
            
           </Navbar.Brand>
-          {currentUser && <Button variant ="outline-light">Logout</Button> }
+          {currentUser && <Button onClick={handleLogoutUser} variant ="outline-light">Logout</Button> }
           
         </Container>
       </Navbar>

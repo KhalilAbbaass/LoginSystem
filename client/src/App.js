@@ -40,7 +40,7 @@ function App() {
 
     {
       element: (
-        <NavbarOne currentUser = {currentUser}/>
+        <NavbarOne currentUser = {currentUser} setCurrentUser = {setCurrentUser}/>
       ),
       children: [
         {
