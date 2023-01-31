@@ -84,11 +84,16 @@ router.get("/logout", async(req,res) => {
 })
 router.get("/current" , async (req, res) => {
     try{
-        const decodedUser = jwtDecode(req.cookies['jwt'])
-        res.send(decodedUser)
+        if(req.cookies["jwt"]){
+             const decodedUser = jwtDecode(req.cookies['jwt'])
+            res.status(200).send(decodedUser)
+        }else{
+            res.status(200).send("user not logged in")
+        }
+       
 
     }catch(err){
-        consolee.log("error at current")
+        console.log("error at current")
         res.status(500).json(err)
 
     }

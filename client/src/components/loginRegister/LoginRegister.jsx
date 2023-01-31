@@ -13,7 +13,7 @@ import icon from '../../assets/lionicon.png'
 import Login from '../login/Login';
 import Register from '../register/Register';
 
-const LoginRegister = () => {
+const LoginRegister = ({handleToggleLogin}) => {
 
     const [radioValue, setRadioValue] = useState('1');
 
@@ -39,7 +39,7 @@ const LoginRegister = () => {
         <h4 className="mt-1 mb-5 pb-1">Welcome to Login System</h4>
       </div>
 
-        {radioValue === '1' ? <Login/> : <Register/>}
+        {radioValue === '1' ? <Login handleToggleLogin = {handleToggleLogin}/> : <Register/>}
      
 
 

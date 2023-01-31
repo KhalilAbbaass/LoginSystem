@@ -6,7 +6,7 @@ import './Login.css'
 import { LoginUser } from '../../services/Login';
 
 
-const Login = () => {
+const Login = ({handleToggleLogin}) => {
 
     const [formErrors, setFormErrors] = useState({})
     const [isSubmit, setIsSubmit] = useState(false)
@@ -35,6 +35,7 @@ const Login = () => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             LoginUser(userLogin).then((result)=> {
                console.log(result.data)
+               handleToggleLogin();
             })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,6 +45,7 @@ const Login = () => {
         e.preventDefault()
         setFormErrors(validate(userLogin))
         setIsSubmit(true)
+       
     }
 
   return (
