@@ -16,6 +16,8 @@ import { useEffect, useState } from "react";
 function App() {
 
   const [toggleLogin, setToggleLogin] = useState(false);
+  const [currentUser, setCurrentUser] = useState();
+  
 
   const handleToggleLogin = () => {
     setToggleLogin(!toggleLogin);
@@ -24,6 +26,12 @@ function App() {
   useEffect(() => {
     getCurrentUser().then((result) => {
       console.log(result.data)
+      if(result.data.role === 'user'){
+        setCurrentUser(result.data.user)
+      }
+      if(result.data.role === 'admin'){
+        setCurrentUser(result.data.admin)
+      }
 
     })
   }, [toggleLogin])
@@ -32,7 +40,7 @@ function App() {
 
     {
       element: (
-        <NavbarOne/>
+        <NavbarOne currentUser = {currentUser}/>
       ),
       children: [
         {

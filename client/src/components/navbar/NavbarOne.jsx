@@ -6,7 +6,9 @@ import {Outlet } from "react-router-dom";
 
 import icon from '../../assets/lionicon.png'
 
-const NavbarOne = () => {
+
+const NavbarOne = ({currentUser}) => {
+
   return (
     <div>
         <Navbar bg="dark" variant="dark">
@@ -20,10 +22,12 @@ const NavbarOne = () => {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-             Login System
+            
+             {currentUser ? "Welcome "+ currentUser.username : "Login System"}
            
           </Navbar.Brand>
-          <Button variant ="outline-light">Login</Button>
+          {currentUser && <Button variant ="outline-light">Logout</Button> }
+          
         </Container>
       </Navbar>
       <Outlet/>
