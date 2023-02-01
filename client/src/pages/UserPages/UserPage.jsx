@@ -1,23 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import "./UserPage.css";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-
+import { getUserQuotes } from '../../services/GetUserQuotes';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const UserPage = () => {
 
-    const allQuotes = ['1','2','3','4','5','6','7','8']
+    const [quotes, setQuotes] = useState([]);
+    const nav = useNavigate();
+    
+    useEffect(() => {
+        getUserQuotes().then((result) => {
 
+            if(result.data === 'Forbidden'){
+                alert("YOU CAN NOT ACCESS USER PAGE")
+                nav("/")
+               
+            }else{
+                 setQuotes(result.data)
+            }      
+        })
+    })
 
   return (
     <div>
         <h4 className='h4Style'>Welcome , you are logged in as a user</h4>
         <Row > 
 
-        {allQuotes.map((item, i) => (
+        {quotes.map((item, i) => (
             <Col className='colStyle' xs={6} md = {4} lg = {3} key={i}>
             <Card
                 bg=''
@@ -30,8 +45,7 @@ const UserPage = () => {
                 <Card.Body>
                     <h3> Quote {i} </h3>
                     <p>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                        {item.quote}
                     </p>
                 </Card.Body>
             </Card>
