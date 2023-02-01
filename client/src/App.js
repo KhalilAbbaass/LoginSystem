@@ -13,10 +13,12 @@ import { getCurrentUser } from "./services/GetCurrentUser";
 import { useEffect, useState } from "react";
 
 
+
 function App() {
 
   const [toggleLogin, setToggleLogin] = useState(false);
   const [currentUser, setCurrentUser] = useState();
+  
   
 
   const handleToggleLogin = () => {
@@ -28,9 +30,11 @@ function App() {
       console.log(result.data)
       if(result.data.role === 'user'){
         setCurrentUser(result.data.user)
+        
       }
       if(result.data.role === 'admin'){
         setCurrentUser(result.data.admin)
+        
       }
 
     })
@@ -46,7 +50,7 @@ function App() {
         {
           path: "/",
           element: (
-            <LoginRegister handleToggleLogin = {handleToggleLogin}/>  
+            <LoginRegister handleToggleLogin = {handleToggleLogin} currentUser = {currentUser}/>  
           ),
         },
         {

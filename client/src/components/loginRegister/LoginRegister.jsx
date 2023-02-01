@@ -12,8 +12,10 @@ import './LoginRegister.css';
 import icon from '../../assets/lionicon.png'
 import Login from '../login/Login';
 import Register from '../register/Register';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-const LoginRegister = ({handleToggleLogin}) => {
+const LoginRegister = ({handleToggleLogin, currentUser}) => {
 
     const [radioValue, setRadioValue] = useState('1');
 
@@ -22,6 +24,17 @@ const LoginRegister = ({handleToggleLogin}) => {
         { name: 'Register', value: '2' },
   ];
 
+  const nav = useNavigate();
+
+  useEffect(() => {
+    if(currentUser){
+        if(!currentUser.isAdmin){
+            nav("/user")
+        }else if(currentUser.isAdmin){
+            nav("/admin")
+        }
+    }
+  })
   
 
   return (
@@ -39,7 +52,7 @@ const LoginRegister = ({handleToggleLogin}) => {
         <h4 className="mt-1 mb-5 pb-1">Welcome to Login System</h4>
       </div>
 
-        {radioValue === '1' ? <Login handleToggleLogin = {handleToggleLogin}/> : <Register/>}
+        {radioValue === '1' ? <Login handleToggleLogin = {handleToggleLogin} /> : <Register/>}
      
 
 
