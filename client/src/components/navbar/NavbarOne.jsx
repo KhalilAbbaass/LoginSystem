@@ -28,7 +28,7 @@ const NavbarOne = ({currentUser, setCurrentUser}) => {
           <Navbar.Brand>
             <img
               alt=''
-              src={icon}
+              src={currentUser ? currentUser.image : icon}
               width="30"
               height="30"
               className="d-inline-block align-top"
