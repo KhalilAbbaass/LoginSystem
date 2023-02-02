@@ -25,7 +25,8 @@ const UserPage = () => {
                  setQuotes(result.data)
             }      
         })
-    })
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[quotes])
 
   return (
     <div>
