@@ -1,0 +1,38 @@
+.tableStyle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4vw;
+}
+.h4Style2{
+    margin: 1rem;
+}
+.tdStyle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.thStyle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnStyle{
+   margin-right: 0.8rem;
+   margin-bottom: 0.8rem;
+}
+.addBtn{
+  width: 30%;
+  background: linear-gradient(to right, #4924ee, #367cd8, #d236dd, #ff09bd);
+}
+.quoteInputDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4vw;
+    flex-direction: column;
+}
+.formGrpStyle{
+    width: 80%;
+}
