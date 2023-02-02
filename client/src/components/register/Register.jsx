@@ -48,7 +48,7 @@ const Register = () => {
       errors.password = "Password cannot exceed more than 10 characters";
     }
    
-    if(values.image.length >= 5000){
+    if(values.image.length >= 2500){
         errors.image = "Chooes a smaller image"
     }
 
